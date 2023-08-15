@@ -18,7 +18,7 @@ class RedisConfig:
 
     db: int = int(getenv('REDIS_DATABASE', 1))
     """ Redis Database ID """
-    host: str = getenv('REDIS_HOST', 'redis')
+    host: str = getenv('REDIS_HOST', 'localhost')
     port: int = int(getenv('REDIS_PORT', 6379))
     passwd: str | None = getenv('REDIS_PASSWORD')
     username: str | None = getenv('REDIS_USERNAME')

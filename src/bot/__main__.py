@@ -4,10 +4,9 @@ import logging
 
 from aiogram import Bot
 from aiogram.fsm.storage.memory import MemoryStorage
-from redis.asyncio.client import Redis
 
 from src.configuration import conf
-from src.bot.dispatcher import get_dispatcher, get_redis_storage
+from src.bot.dispatcher import get_dispatcher
 
 
 async def start_bot():
