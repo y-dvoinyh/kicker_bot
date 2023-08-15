@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "kicker-bot"
+version = "0.1.0"
+description = ""
+authors = ["sid2503 <yaroslav.dvoinyh@gmail.com>"]
+readme = "README.md"
+packages = [{include = "kicker_bot"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aiogram = "^3.0b6"
+redis = "^5.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
