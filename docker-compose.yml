@@ -18,9 +18,7 @@ services:
     ports:
       - "5432:5432"
   bot:
-    build:
-      context: .
-      dockerfile: buildfiles/Dockerfile
+    build: .
     env_file:
       - ./.env
     command: sh -c "python -m src.bot"
