@@ -47,7 +47,6 @@ services:
     env_file:
       - ./.env
     command: sh -c "python -m src.bot"
-
     restart: always
     depends_on:
       - db
