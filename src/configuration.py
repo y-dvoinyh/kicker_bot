@@ -8,9 +8,10 @@ from sqlalchemy.engine import URL
 from dotenv import load_dotenv
 
 
+# TODO удалить
 dotenv_path = '../../.env'
 alembic_dotenv_path = '.env'
-
+# TODO удалить
 for p_path in (dotenv_path, alembic_dotenv_path):
     if path.exists(p_path):
         load_dotenv(p_path)
