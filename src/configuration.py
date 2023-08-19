@@ -5,8 +5,7 @@ from dataclasses import dataclass
 from os import getenv, path
 from sqlalchemy.engine import URL
 
-from dotenv import load_dotenv
-
+# from dotenv import load_dotenv
 
 # # TODO удалить
 # dotenv_path = '../../.env'
