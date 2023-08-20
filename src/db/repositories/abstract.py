@@ -6,7 +6,7 @@ from collections.abc import Sequence
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..models import Base
+from ..models import BaseModel
 
 AbstractModel = TypeVar('AbstractModel')
 
@@ -14,10 +14,10 @@ AbstractModel = TypeVar('AbstractModel')
 class Repository(Generic[AbstractModel]):
     """Repository abstract class."""
 
-    type_model: type[Base]
+    type_model: type[BaseModel]
     session: AsyncSession
 
-    def __init__(self, type_model: type[Base], session: AsyncSession):
+    def __init__(self, type_model: type[BaseModel], session: AsyncSession):
         """Initialize abstract repository class.
 
         :param type_model: Which model will be used for operations
@@ -48,7 +48,7 @@ class Repository(Generic[AbstractModel]):
 
     async def get_many(
             self, whereclause, limit: int = 100, order_by=None
-    ) -> Sequence[Base]:
+    ) -> Sequence[BaseModel]:
         """Get many models from the database with whereclause.
 
         :param whereclause: Where clause for finding models

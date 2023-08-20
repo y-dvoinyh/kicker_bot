@@ -1,6 +1,6 @@
 """Init file for models namespace."""
-from .base import Base
-from .chat import Chat
-from .user import User
+from .base import BaseModel
+from .user import UserModel
+from .chat import ChatModel
 
-__all__ = ('Base', 'Chat', 'User')
+__all__ = 'Base'

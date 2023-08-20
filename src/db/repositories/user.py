@@ -5,16 +5,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.bot.structures.role import Role
 
-from ..models import Base, User
+from ..models import BaseModel, UserModel
 from .abstract import Repository
 
 
-class UserRepo(Repository[User]):
+class UserRepo(Repository[UserModel]):
     """User repository for CRUD and other SQL queries."""
 
     def __init__(self, session: AsyncSession):
         """Initialize user repository as for all users or only for one user."""
-        super().__init__(type_model=User, session=session)
+        super().__init__(type_model=UserModel, session=session)
 
     async def new(
         self,
@@ -25,7 +25,7 @@ class UserRepo(Repository[User]):
         language_code: str | None = None,
         is_premium: bool | None = False,
         role: Role | None = Role.USER,
-        user_chat: type[Base] = None,
+        user_chat: type[BaseModel] = None,
     ) -> None:
         """Insert a new user into the database.
 
@@ -39,7 +39,7 @@ class UserRepo(Repository[User]):
         :param user_chat: Telegram chat with user.
         """
         await self.session.merge(
-            User(
+            UserModel(
                 user_id=user_id,
                 user_name=user_name,
                 first_name=first_name,
@@ -54,5 +54,5 @@ class UserRepo(Repository[User]):
     async def get_role(self, user_id: int) -> Role:
         """Get user role by id."""
         return await self.session.scalar(
-            select(User.role).where(User.user_id == user_id).limit(1)
+            select(UserModel.role).where(UserModel.user_id == user_id).limit(1)
         )

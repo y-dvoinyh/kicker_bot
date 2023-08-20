@@ -1,17 +1,17 @@
 """Chat repository file."""
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..models import Chat
-from ..models import User as _User
+from ..models import ChatModel
+from ..models import UserModel as _User
 from .abstract import Repository
 
 
-class ChatRepo(Repository[Chat]):
+class ChatRepo(Repository[ChatModel]):
     """Chat repository for CRUD and other SQL queries."""
 
     def __init__(self, session: AsyncSession):
         """Initialize chat repository as for all chats or only for one chat."""
-        super().__init__(type_model=Chat, session=session)
+        super().__init__(type_model=ChatModel, session=session)
 
     async def new(
         self,
@@ -23,7 +23,7 @@ class ChatRepo(Repository[Chat]):
     ) -> None:
         """Insert a new user into the database."""
         new_chat = await self.session.merge(
-            Chat(
+            ChatModel(
                 chat_id=chat_id,
                 chat_type=chat_type,
                 title=title,

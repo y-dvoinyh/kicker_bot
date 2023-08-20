@@ -5,12 +5,15 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from src.bot.structures.role import Role
 
-from .base import Base
-from .chat import Chat
+from .base import BaseModel
+from .chat import ChatModel
 
 
-class User(Base):
+class UserModel(BaseModel):
     """User model."""
+    __tablename__ = 'user'
+
+    id: Mapped[int] = mapped_column(sa.BigInteger, autoincrement=True, primary_key=True)
     # Telegram user id
     user_id: Mapped[int] = mapped_column(
         sa.BigInteger, unique=True, nullable=False
@@ -37,6 +40,6 @@ class User(Base):
     user_chat_fk: Mapped[int] = mapped_column(
         sa.ForeignKey('chat.id'), unique=False, nullable=False
     )
-    user_chat: Mapped[Chat] = orm.relationship(
+    user_chat: Mapped[ChatModel] = orm.relationship(
         'Chat', uselist=False, lazy='joined'
     )
