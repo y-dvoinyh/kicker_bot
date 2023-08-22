@@ -5,6 +5,6 @@ COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install -r requirements.txt
-# RUN alembic upgrade head
 RUN chmod 755 .
 COPY . .
+# RUN alembic upgrade head
