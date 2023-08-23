@@ -46,7 +46,7 @@ class DatabaseConfig:
     user: str | None = getenv('POSTGRES_USER')
     passwd: str | None = getenv('POSTGRES_PASSWORD', None)
     port: int = int(getenv('POSTGRES_PORT', 5432))
-    host: str = getenv('POSTGRES_HOST', 'db')
+    host: str = getenv('POSTGRES_HOST', 'localhost')
 
     driver: str = 'asyncpg'
     database_system: str = 'postgresql'
